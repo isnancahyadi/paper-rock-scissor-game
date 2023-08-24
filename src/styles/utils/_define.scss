@@ -1,5 +1,9 @@
 // variable
 @import "./variables";
 
+// global style
+@import "../Global.scss";
+
 // components
 @import "../components/StartGame.scss";
+@import "../components/SinglePlayer.scss";

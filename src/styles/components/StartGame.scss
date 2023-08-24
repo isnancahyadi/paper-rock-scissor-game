@@ -1,25 +1,6 @@
 .Start {
   width: 100vw;
   height: 100vh;
-  background-color: $bg-color;
-
-  .btn-primary {
-    background-color: $btn-bg-color;
-    border-color: $btn-bg-color;
-    font-family: cursive;
-    padding: 1.5vh 2.5vw;
-    font-weight: 600;
-
-    &:hover {
-      background-color: #6c338e;
-      border-color: #6c338e;
-    }
-
-    &:active {
-      background-color: $bg-color;
-      border-color: $btn-bg-color;
-    }
-  }
 
   .card {
     padding: 5vh 5vw;
