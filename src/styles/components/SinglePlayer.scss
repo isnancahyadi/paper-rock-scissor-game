@@ -39,6 +39,28 @@
       #computer {
         transform: rotate(-90deg);
       }
+
+      .start {
+        #player {
+          animation: playerShake 0.7s ease infinite;
+        }
+
+        @keyframes playerShake {
+          50% {
+            transform: rotate(50deg) rotateY(180deg);
+          }
+        }
+
+        #computer {
+          animation: computerShake 0.7s ease infinite;
+        }
+
+        @keyframes computerShake {
+          50% {
+            transform: rotate(-50deg);
+          }
+        }
+      }
     }
   }
 }
