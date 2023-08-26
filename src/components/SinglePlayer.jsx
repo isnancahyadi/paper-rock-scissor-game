@@ -1,171 +1,57 @@
 import React, { useEffect, useRef, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SinglePlayGameScenes from "./SinglePlayGameScenes";
+import { Link } from "react-router-dom";
 
 const SinglePlayer = () => {
-  const [playerFighter, setPlayerFighter] = useState("");
-  const [compFighter, setCompFighter] = useState("");
-  const [fighting, setFighting] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [winner, setWinner] = useState("");
-
-  const compFighterRef = useRef();
-  compFighterRef.current = compFighter;
-
-  const computerFighter = () => {
-    const fighter = ["paper", "rock", "scissors"];
-    const randomNumber = Math.floor(Math.random() * 3);
-
-    setCompFighter(fighter[randomNumber]);
-  };
-
-  const selectedPlayerFighter = () => {
-    switch (playerFighter) {
-      case "paper":
-        return "/assets/paper.svg";
-      case "rock":
-        return "/assets/rock.svg";
-      case "scissors":
-        return "/assets/scissors.svg";
-      default:
-        break;
-    }
-  };
-
-  const selectedCompFighter = () => {
-    switch (compFighter) {
-      case "paper":
-        return "/assets/paper.svg";
-      case "rock":
-        return "/assets/rock.svg";
-      case "scissors":
-        return "/assets/scissors.svg";
-      default:
-        break;
-    }
-  };
-
-  const gameResult = () => {
-    const rule = {
-      paper_paper: "Draw",
-      paper_rock: "You",
-      paper_scissors: "Computer",
-      rock_paper: "Computer",
-      rock_rock: "Draw",
-      rock_scissors: "You",
-      scissors_paper: "You",
-      scissors_rock: "Computer",
-      scissors_scissors: "Draw",
-    };
-
-    let result = `${playerFighter}_${compFighterRef.current}`;
-
-    setWinner(rule[result]);
-  };
-
-  const startFighting = () => {
-    computerFighter();
-    setFighting(true);
-    setLoading(true);
-
-    setTimeout(() => {
-      gameResult();
-      setLoading(false);
-    }, 2500);
-  };
+  const [round, setRound] = useState(1);
+  const [start, setStart] = useState(false);
 
   return (
     <div className="SinglePlayer d-flex">
+      <Link to={"/"}>
+        <h5
+          className="text-light mt-3 ms-4 p-0"
+          style={{
+            position: "absolute",
+            // cursor: "pointer",
+          }}
+        >
+          {"<<"} Back Home
+        </h5>
+      </Link>
+
       <div className="container-fluid d-flex justify-content-center align-items-center">
         <div className="card border-light text-center w-50 h-70">
           <div className="card-body">
-            {fighting ? (
-              <>
-                <div className="fighting d-flex justify-content-between">
-                  <div className={`col-md-6 ${loading && "start"}`}>
-                    <h2 className="text-light m-0 p-0">You</h2>
-                    <img
-                      id="player"
-                      className="fighter"
-                      src={
-                        loading ? "/assets/rock.svg" : selectedPlayerFighter()
-                      }
-                      alt="fighter"
-                    />
-                  </div>
-                  <div className={`col-md-6 ${loading && "start"}`}>
-                    <h2 className="text-light m-0 p-0">Computer</h2>
-                    <img
-                      id="computer"
-                      className="fighter"
-                      src={loading ? "/assets/rock.svg" : selectedCompFighter()}
-                      alt="fighter"
-                    />
-                  </div>
-                </div>
-                {loading ? (
-                  <h1 className="text-light m-0 p-0">Fighting...</h1>
-                ) : (
-                  <h1 className="text-light m-0 p-0">
-                    {winner === "Draw" ? "Game Draw!" : `${winner} Win!`}
-                  </h1>
-                )}
-              </>
+            {start ? (
+              <SinglePlayGameScenes round={round} />
             ) : (
               <>
-                <div className="row choose-fighter d-flex justify-content-center">
-                  <div
-                    id="paper"
-                    className={`option col-md-4 ${
-                      playerFighter === "paper" ? "selected" : ""
-                    }`}
-                    onClick={() => setPlayerFighter("paper")}
+                <h1 className="text-light m-0 p-0">Select Round</h1>
+                <div className="mt-5 mb-5 gap-5 d-flex justify-content-center align-items-center">
+                  <button
+                    className="btn btn-box d-flex justify-content-center align-items-center border border-light border-3"
+                    onClick={() => setRound((prev) => prev - 1)}
+                    disabled={round === 1}
                   >
-                    <img
-                      className="fighter"
-                      src="/assets/paper.svg"
-                      alt="fighter"
-                    />
-                  </div>
-                  <div
-                    id="rock"
-                    className={`option col-md-4 ${
-                      playerFighter === "rock" ? "selected" : ""
-                    }`}
-                    onClick={() => setPlayerFighter("rock")}
+                    <FontAwesomeIcon className="ic" icon="backward" size="xl" />
+                  </button>
+                  <h2 className="text-light ms-5 me-5">{round}</h2>
+                  <button
+                    className="btn btn-box d-flex justify-content-center align-items-center border border-light border-3"
+                    onClick={() => setRound((prev) => prev + 1)}
+                    disabled={round === 7}
                   >
-                    <img
-                      className="fighter"
-                      src="/assets/rock.svg"
-                      alt="fighter"
-                    />
-                  </div>
-                  <div
-                    id="scissors"
-                    className={`option col-md-4 ${
-                      playerFighter === "scissors" ? "selected" : ""
-                    }`}
-                    onClick={() => setPlayerFighter("scissors")}
-                  >
-                    <img
-                      className="fighter"
-                      src="/assets/scissors.svg"
-                      alt="fighter"
-                    />
-                  </div>
+                    <FontAwesomeIcon className="ic" icon="forward" size="xl" />
+                  </button>
                 </div>
-                <div className="action mt-3">
-                  {playerFighter ? (
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => {
-                        startFighting();
-                      }}
-                    >
-                      FIGHT!
-                    </button>
-                  ) : (
-                    <h1 className="text-light m-0 p-0">Choose your fighter!</h1>
-                  )}
-                </div>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => setStart(true)}
+                >
+                  Start Game
+                </button>
               </>
             )}
           </div>

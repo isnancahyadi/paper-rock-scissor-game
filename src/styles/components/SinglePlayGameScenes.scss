@@ -1,0 +1,58 @@
+.SinglePlayGameScenes {
+  .fighter {
+    height: 30vh;
+    width: auto;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: cursive;
+    font-weight: 600;
+  }
+
+  .choose-fighter {
+    .option {
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity 0.3 ease;
+    }
+
+    .option:hover,
+    .option.selected {
+      opacity: 1;
+    }
+  }
+
+  .fighting {
+    #player {
+      transform: rotate(90deg) rotateY(180deg);
+    }
+
+    #computer {
+      transform: rotate(-90deg);
+    }
+
+    .start {
+      #player {
+        animation: playerShake 0.7s ease infinite;
+      }
+
+      @keyframes playerShake {
+        50% {
+          transform: rotate(50deg) rotateY(180deg);
+        }
+      }
+
+      #computer {
+        animation: computerShake 0.7s ease infinite;
+      }
+
+      @keyframes computerShake {
+        50% {
+          transform: rotate(-50deg);
+        }
+      }
+    }
+  }
+}

@@ -7,8 +7,12 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faForward, faBackward } from "@fortawesome/free-solid-svg-icons";
 import StartGame from "./components/StartGame";
 import SinglePlayer from "./components/SinglePlayer";
+
+library.add(faForward, faBackward);
 
 const router = createBrowserRouter(
   createRoutesFromElements(
