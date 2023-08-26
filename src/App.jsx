@@ -11,6 +11,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faForward, faBackward } from "@fortawesome/free-solid-svg-icons";
 import StartGame from "./components/StartGame";
 import SinglePlayer from "./components/SinglePlayer";
+import MultiPlayer from "./components/MultiPlayer";
 
 library.add(faForward, faBackward);
 
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
     <Route>
       <Route index element={<StartGame />} />
       <Route path="/single-player" element={<SinglePlayer />} />
+      <Route path="/multi-player" element={<MultiPlayer />} />
     </Route>
   )
 );

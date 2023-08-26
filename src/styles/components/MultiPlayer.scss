@@ -1,0 +1,30 @@
+.MultiPlayer {
+  width: 100vw;
+  height: 100vh;
+
+  h5 {
+    font-family: cursive;
+    font-weight: 600;
+  }
+
+  .card {
+    padding: 5vh 5vw;
+    background-color: $bg-color;
+    box-shadow: 0 0 50px 10px rgba(110, 108, 146, 0.75);
+
+    h1,
+    h2 {
+      font-family: cursive;
+      font-weight: 600;
+    }
+
+    .btn-box {
+      width: 3.5vw;
+      height: 3.5vw;
+    }
+
+    .ic {
+      color: #ffffff;
+    }
+  }
+}

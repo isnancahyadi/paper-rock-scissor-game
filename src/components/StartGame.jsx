@@ -18,7 +18,9 @@ const StartGame = () => {
                 </Link>
               </div>
               <div className="col-auto">
-                <button className="btn btn-primary fs-5">Multi Player</button>
+                <Link to={"/multi-player"}>
+                  <button className="btn btn-primary fs-5">Multi Player</button>
+                </Link>
               </div>
             </div>
           </div>
