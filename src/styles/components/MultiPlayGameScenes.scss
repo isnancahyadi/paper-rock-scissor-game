@@ -1,4 +1,10 @@
 .MultiPlayGameScenes {
+  width: 100%;
+
+  .card {
+    width: 100%;
+  }
+
   .fighter {
     height: 30vh;
     width: auto;
@@ -25,34 +31,40 @@
   }
 
   .fighting {
-    #player {
+    #player1 {
       transform: rotate(90deg) rotateY(180deg);
     }
 
-    #computer {
+    #player2 {
       transform: rotate(-90deg);
     }
 
     .start {
-      #player {
-        animation: playerShake 0.7s ease infinite;
+      #player1 {
+        animation: player1Shake 0.7s ease infinite;
       }
 
-      @keyframes playerShake {
+      @keyframes player1Shake {
         50% {
           transform: rotate(50deg) rotateY(180deg);
         }
       }
 
-      #computer {
-        animation: computerShake 0.7s ease infinite;
+      #player2 {
+        animation: player2Shake 0.7s ease infinite;
       }
 
-      @keyframes computerShake {
+      @keyframes player2Shake {
         50% {
           transform: rotate(-50deg);
         }
       }
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    .fighter {
+      height: 15vh;
     }
   }
 }

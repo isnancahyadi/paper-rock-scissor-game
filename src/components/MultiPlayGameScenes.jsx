@@ -114,7 +114,7 @@ const MultiPlayGameScenes = (props) => {
       title:
         score.player1 > score.player2
           ? "Player 1 a Winner!"
-          : score.you == score.com
+          : score.player1 === score.player2
           ? "Draw Game"
           : "Player 2 is a Winner!",
       text: "Play again ?",
@@ -144,18 +144,18 @@ const MultiPlayGameScenes = (props) => {
       <h1 className="text-light p-0">Round {currentRound}</h1>
       {fighting ? (
         <>
-          <div className="fighting d-flex justify-content-between">
-            <div className={`col-md-6 ${loading && "start"}`}>
+          <div className="fighting row d-flex justify-content-between">
+            <div className={`col-6 ${loading && "start"}`}>
               <img
-                id="player"
+                id="player1"
                 className="fighter"
                 src={loading ? "/assets/rock.svg" : selectedPlayer1Fighter()}
                 alt="fighter"
               />
             </div>
-            <div className={`col-md-6 ${loading && "start"}`}>
+            <div className={`col-6 ${loading && "start"}`}>
               <img
-                id="computer"
+                id="player2"
                 className="fighter"
                 src={loading ? "/assets/rock.svg" : selectedPlayer2Fighter()}
                 alt="fighter"
@@ -192,16 +192,16 @@ const MultiPlayGameScenes = (props) => {
       ) : readyToFight ? (
         <>
           <div className="row d-flex justify-content-center">
-            <div className="col-md-4">
+            <div className="col-4">
               <h1 className="text-light m-0 p-0">Player 1</h1>
               <h1 className="text-light m-0 p-0">
                 {fighter.player1 && "Ready"}
               </h1>
             </div>
-            <div className="col-md-4">
+            <div className="col-4">
               <h3 className="text-light m-0 p-0">vs</h3>
             </div>
-            <div className="col-md-4">
+            <div className="col-4">
               <h1 className="text-light m-0 p-0">Player 2</h1>
               <h1 className="text-light m-0 p-0">
                 {fighter.player2 && "Ready"}
@@ -223,7 +223,7 @@ const MultiPlayGameScenes = (props) => {
             <h1 className="text-light mb-5 p-0">Player {playerTurn} turn</h1>
             <div
               id="paper"
-              className={`option col-md-4 ${
+              className={`option col-4 ${
                 selectFighter === "paper" && "selected"
               }`}
               onClick={() => setSelectFighter("paper")}
@@ -232,7 +232,7 @@ const MultiPlayGameScenes = (props) => {
             </div>
             <div
               id="rock"
-              className={`option col-md-4 ${
+              className={`option col-4 ${
                 selectFighter === "rock" && "selected"
               }`}
               onClick={() => setSelectFighter("rock")}
@@ -241,7 +241,7 @@ const MultiPlayGameScenes = (props) => {
             </div>
             <div
               id="scissors"
-              className={`option col-md-4 ${
+              className={`option col-4 ${
                 selectFighter === "scissors" && "selected"
               }`}
               onClick={() => setSelectFighter("scissors")}

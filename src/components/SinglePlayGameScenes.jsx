@@ -99,7 +99,7 @@ const SinglePlayGameScenes = (props) => {
       title:
         score.you > score.com
           ? "You are a Winner!"
-          : score.you == score.com
+          : score.you === score.com
           ? "Draw Game"
           : "Computer is a Winner!",
       text: "Play again ?",
@@ -129,9 +129,8 @@ const SinglePlayGameScenes = (props) => {
       <h1 className="text-light mb-5 p-0">Round {currentRound}</h1>
       {fighting ? (
         <>
-          <div className="fighting d-flex justify-content-between">
-            <div className={`col-md-6 ${loading && "start"}`}>
-              {/* <h2 className="text-light m-0 p-0">You</h2> */}
+          <div className="fighting row justify-content-between">
+            <div className={`col-6 ${loading && "start"}`}>
               <img
                 id="player"
                 className="fighter"
@@ -139,8 +138,7 @@ const SinglePlayGameScenes = (props) => {
                 alt="fighter"
               />
             </div>
-            <div className={`col-md-6 ${loading && "start"}`}>
-              {/* <h2 className="text-light m-0 p-0">Computer</h2> */}
+            <div className={`col-6 ${loading && "start"}`}>
               <img
                 id="computer"
                 className="fighter"
@@ -181,7 +179,7 @@ const SinglePlayGameScenes = (props) => {
           <div className="row choose-fighter d-flex justify-content-center">
             <div
               id="paper"
-              className={`option col-md-4 ${
+              className={`option col-4 ${
                 playerFighter === "paper" ? "selected" : ""
               }`}
               onClick={() => setPlayerFighter("paper")}
@@ -190,7 +188,7 @@ const SinglePlayGameScenes = (props) => {
             </div>
             <div
               id="rock"
-              className={`option col-md-4 ${
+              className={`option col-4 ${
                 playerFighter === "rock" ? "selected" : ""
               }`}
               onClick={() => setPlayerFighter("rock")}
@@ -199,7 +197,7 @@ const SinglePlayGameScenes = (props) => {
             </div>
             <div
               id="scissors"
-              className={`option col-md-4 ${
+              className={`option col-4 ${
                 playerFighter === "scissors" ? "selected" : ""
               }`}
               onClick={() => setPlayerFighter("scissors")}

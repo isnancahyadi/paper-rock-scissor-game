@@ -1,4 +1,10 @@
 .SinglePlayGameScenes {
+  width: 100%;
+
+  .card {
+    width: 100%;
+  }
+
   .fighter {
     height: 30vh;
     width: auto;
@@ -53,6 +59,12 @@
           transform: rotate(-50deg);
         }
       }
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    .fighter {
+      height: 15vh;
     }
   }
 }

@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const StartGame = () => {
   return (
-    <div className="Start d-flex">
+    <div className="Start d-flex vh-100 vw-100">
       <div className="container-fluid d-flex justify-content-center align-items-center">
-        <div className="card border-light text-center w-50">
+        <div className="card border-light text-center">
           <div className="card-body">
             <img id="logo-app" src="/assets/prs_game_logo.svg" alt="logo" />
             <h1 className="text-light mt-5 mb-5">Let's get started!</h1>
